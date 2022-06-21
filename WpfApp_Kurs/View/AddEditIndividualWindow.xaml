@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfApp_Kurs.View.AddEditIndividualWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_Kurs.View"
+        mc:Ignorable="d"
+        Title="AddEditIndividualWindow" Height="300" Width="300"
+        Name="AddEditIndividual">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="250">
+            <TextBlock Text="Имя"/>
+            <TextBox Name="NameBlock" Text="{Binding IndividualName}"/>
+            <TextBlock Text="Пол"/>
+            <TextBox Name="SexBlock" Text="{Binding IndividualSex}"/>
+            <TextBlock Text="Возраст"/>
+            <TextBox Name="AgeBlock" Text="{Binding IndividualAge}"/>
+            <TextBlock Text="Вид"/>
+            <ComboBox ItemsSource="{Binding AllAnimals}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding IndividualAnimal}"/>
+            <TextBlock Text="Заповедник"/>
+            <ComboBox ItemsSource="{Binding AllReserves}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding IndividualReserve}"/>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Сохранить особь" 
+                Command="{Binding AddIndividual}"
+                CommandParameter="{Binding ElementName=AddEditIndividual}"/>
+    </Grid>
+</Window>
